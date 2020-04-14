@@ -1,0 +1,75 @@
+{% extends 'tea_index.html' %}
+{% block content %}
+   <div class="content">
+        <div class="header">
+
+            <h1 class="page-title">上传视频</h1>
+                    <ul class="breadcrumb">
+            <li><a href="stu_reply.html">Home</a> </li>
+            <li><a href="users.html">Users</a> </li>
+            <li class="active">{{ tea_obj.tea_name }} 老师</li>
+        </ul>
+
+        </div>
+        <div class="main-content">
+
+<div class="row">
+  <div class="col-md-4">
+    <br>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane active in" id="home">
+      <form id="tab" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+        <div class="form-group">
+        <label>视频名称：</label>
+        <input type="text" id="video_name" class="form-control" name="video_name">
+        </div>
+        <div class="form-group">
+        <label>视频：</label>
+        <input type="file" id="video" name="video"></div>
+        <div class="form-group">
+        <label>视频类型：</label>
+            <select name="video_type" id="video_type">
+            <option value="乐理基础" selected="selected">乐理基础</option>
+            <option value="声乐唱歌">声乐唱歌</option>
+            <option value="器乐学习">器乐学习</option>
+            <option value="编曲创作">编曲创作</option>
+            <option value="其他">其他</option>
+            </select>
+        </div>
+        <div class="form-group">
+        <label>视频介绍：</label>
+        <textarea id="video_intr" name="video_intr" class="form-control" cols="30" rows="4">本视频的介绍。。。</textarea>
+        <button type="submit" id="check_value">上传</button>
+        </div>
+{#    </form>#}
+
+        </form>
+      </div>
+
+  </div>
+</div>
+</div>
+</div>
+   </div>
+    <script type="text/javascript">
+       $(document).ready(function() {
+           //每个有子菜单的菜单项添加点击事件
+           $(".tree label").click(function(){
+               //获取当前菜单旁边input的check状态
+               var isChecked = $(this).next("input[type='checkbox']").is(':checked');
+               //展开和收齐的不同状态下更换右侧小图标
+               if(isChecked){
+                   $(this).css(
+                       "background-image","url(../images/cp-detail-arrow-b.png)"
+                   );
+               }else{
+                   $(this).css(
+                       "background-image","url(../images/cp-detail-arrow-t.png)"
+                   );
+               }
+           });
+
+       });
+   </script>
+{% endblock %}

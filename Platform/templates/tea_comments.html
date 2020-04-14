@@ -1,0 +1,58 @@
+{% extends 'tea_index.html' %}
+{% block content %}
+    <div class="content">
+        <div class="header">
+
+            <h1 class="page-title">讨论区</h1>
+                    <ul class="breadcrumb">
+            <li><a href="stu_reply.html">Home</a> </li>
+            <li class="active">Users</li>
+        </ul>
+
+        </div>
+        <div class="main-content">
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th style="width: 20em;">留言人</th>
+      <th style="width: 20em;">留言内容</th>
+      <th>留言时间</th>
+      <th>操作</th>
+      <th style="width: 2em;"></th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for obj in obj_ %}
+    <tr class="first">
+      <td> {% if obj.stu_id.stu_name  %}
+                {{ obj.stu_id.stu_name }}同学
+           {% elif obj.tea_id.tea_name %}
+                {{ obj.tea_id.tea_name }}老师
+           {% endif %}
+      </td>
+      <td>{{ obj.msg_content }}</td>
+      <td>{{ obj.msg_time }}</td>
+      <td>
+         <a href="/tea_reply/{{ obj.msg_id }}/"><input type="button" value="回复" /></a>
+      </td>
+    </tr>
+
+    {% endfor %}
+  </tbody>
+</table>
+<div class="pagination">
+     <a href="/teas_info/1">首页</a>
+    {% if page_obj.has_previous %}
+        <a href="/teas_info/{{ page_obj.previous_page_number }}">上一页</a>
+    {% endif %}
+        {% for page in page_range %}
+               <a href="/teas_info/{{ page }}">{{ page }}</a>
+        {% endfor %}
+     {% if page_obj.has_next %}
+         <a href="/teas_info/{{ page_obj.next_page_number }}">下一页</a>
+     {% endif %}
+     <a href="/teas_info/{{ paginator.num_pages }}">尾页</a>
+</div>
+</div>
+{% endblock %}

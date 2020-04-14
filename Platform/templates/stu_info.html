@@ -1,0 +1,52 @@
+{% extends 'stu_base.html' %}
+{% block content %}
+ <div class="container-fluid">
+            <div class="settings-wrapper" id="pad-wrapper">
+                <!-- edit form column -->
+                <div class="span7 personal-info" style="border:none;box-shadow:nonw">
+{#                    <div class="alert alert-info">#}
+{#                        <i class="icon-lightbulb"></i>#}
+{#                        This page shows an example of an alternative layout with the main navbar on the top#}
+{#                        <br /> using <strong>.content.wide-content</strong> for this main container#}
+{#                    </div>#}
+                    <h5 class="personal-title">个人信息</h5>
+                    <div class="field-box">
+                    <form>
+                        <div class="field-box">
+                            <label>学号:</label>
+                            <input class="span5 inline-input" type="text"  value="{{ stu_obj.stu_num }}" disabled>
+
+                        </div>
+                        <div class="field-box">
+                            <label>姓名:</label>
+                            <input class="span5 inline-input" type="text"  value="{{ stu_obj.stu_name }}" disabled>
+                        </div>
+                        <div class="field-box">
+                            <label>性别:</label>
+                            <input class="span5 inline-input" type="text"  value="{{ stu_obj.stu_sex }}" disabled/>
+                        </div>
+                        <div class="field-box">
+                            <label>年龄:</label>
+                            <input class="span5 inline-input" type="text" value="{{ stu_obj.stu_age }}" disabled/>
+                        </div>
+
+                        <div class="field-box">
+                            <label>密码:</label>
+                            <input class="span5 inline-input" type="text" value="{{ stu_obj.stu_pwd }}"  disabled/>
+                        </div>
+{#                        <div class="field-box">#}
+{#                            <label>Confirm password:</label>#}
+{#                            <input class="span5 inline-input" type="password" value="blablablabla" />#}
+{#                        </div>#}
+{#                        <div class="span6 field-box actions">#}
+{#                            <input type="button" class="btn-glow primary" value="Save Changes" />#}
+{#                            <span>OR</span>#}
+{#                            <input type="reset" value="Cancel" class="reset" />#}
+{#                        </div>#}
+                    </form>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'tea_index.html' %}
+{% block content %}
+{#    <style>#}
+{#     #comment#}
+{#    {#}
+{#        width:100%; /* 为什么textarea的宽度要宽于bk的宽度，如何让它正好占满bk的宽度？？？ */#}
+{#        height:100px;#}
+{#    }#}
+{#    </style>#}
+{#     <div class="container-fluid">#}
+{#            <div class="settings-wrapper" id="pad-wrapper">#}
+{#                <!-- edit form column -->#}
+{#                <div class="span7 personal-info" style="border:none;box-shadow:nonw">#}
+{#                    <h5 class="personal-title">留言信息</h5>#}
+{#                    <div class="field-box">#}
+{#                    <form action="" method="post" id="comment">#}
+{#                        {% csrf_token %}#}
+{#                        <div class="field-box">#}
+{#                            <label>信息内容:</label>#}
+{#                            <textarea id="comment" name="comment" class="form-control" cols="2" rows="10"></textarea>#}
+{#                        </div>#}
+{#                        <button type="submit" id="check_value">提交留言</button>#}
+{#                    </form>#}
+{#                </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            </div>#}
+    <div class="content">
+        <div class="header">
+
+            <h1 class="page-title">发表想法</h1>
+                    <ul class="breadcrumb">
+            <li><a href="stu_reply.html">Home</a> </li>
+            <li class="active">Users</li>
+        </ul>
+
+        </div>
+        <div class="main-content">
+<form action="" method="post" id="comment">
+                        {% csrf_token %}
+                        <div class="field-box">
+                            <label>信息内容:</label>
+                            <textarea id="comment" name="comment" class="form-control" cols="2" rows="10"></textarea>
+                        </div>
+                        <button type="submit" id="check_value">提交留言</button>
+</form>
+</div>
+    </div>
+{% endblock %}

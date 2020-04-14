@@ -1,0 +1,89 @@
+{% extends 'stu_base.html' %}
+{% block content %}
+    <div class="container-fluid">
+            <div id="pad-wrapper">
+
+                <!-- products table-->
+                <!-- the script for the toggle all checkboxes from header is located in /static/student/js/theme.js -->
+                <div class="layout">
+                    <div class="row-fluid head">
+                        <div class="span12">
+                            <h4>视频列表</h4>
+                        </div>
+                    </div>
+
+                    <div class="row-fluid filter-block">
+                        <div class="pull-right">
+                            <div class="ui-select">
+                                <select>
+                                  <option />Filter users
+                                  <option />Signed last 30 days
+                                  <option />Active users
+                                </select>
+                            </div>
+                            <input type="text" class="search" />
+                            <a class="btn-flat success new-product">+ Add product</a>
+                        </div>
+                    </div>
+
+                    <div class="row-fluid">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="span3">
+                                        <input type="checkbox" />
+                                        视频名称
+                                    </th>
+                                    <th class="span3">
+                                        <span class="line"></span>视频类型
+                                    </th>
+                                    <th class="span3">
+                                        <span class="line"></span>视频上传人
+                                    </th>
+                                    <th class="span3">
+                                        <span class="line"></span>视频介绍
+                                    </th>
+                                        <th class="span3">
+                                        <span class="line"></span>视频发布时间
+                                    </th>
+                                    <th class="span3">
+                                        <span class="line"></span>操作
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- row -->
+                                {% for video1_obj in video_obj %}
+                                <tr class="first">
+                                    <td>
+                                        <input type="checkbox" />
+                                        {{ video1_obj.video_name }}
+                                    </td>
+                                    <td class="description">
+                                        {{ video1_obj.video_type }}
+                                    </td>
+                                    <td>
+                                        <span class="label label-success">{{ video1_obj.video_person }} 老师</span>
+                                    </td>
+                                      <td>
+                                        {{ video1_obj.video_pro }}
+                                    </td>
+                                    <td>
+                                        {{ video1_obj.video_time }}
+                                    </td>
+                                    <td>
+                                        <ul class="actions">
+                                            <li><a href="/video_playing/{{ video1_obj.video_id }}" target="_blank">观看</a></li>
+                                            <li class="last"><a href="/video_download/{{ video1_obj.video_id }}">下载</a></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- end products table -->
+            </div>
+        </div>
+{% endblock %}

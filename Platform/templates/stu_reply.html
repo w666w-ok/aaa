@@ -1,0 +1,102 @@
+{% extends 'stu_base.html' %}
+{% block content %}
+    <div class="container-fluid">
+        <style>
+            #reply {
+                width: 100%; /* 为什么textarea的宽度要宽于bk的宽度，如何让它正好占满bk的宽度？？？ */
+                height: 100px;
+            }
+        </style>
+        <div id="pad-wrapper">
+            <div class="layout">
+                <div class="row-fluid head">
+                    <div class="span12">
+                        <h4>回复提问</h4>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <form method="post" id="form1" action="">
+                        {% csrf_token %}
+                        <table class="table striped">
+                            <thead>
+                            <tr>
+                                <th class="span3">
+                                    <span class="line"></span>留言人
+                                </th>
+                                <th class="span3">
+                                    <span class="line"></span>留言内容
+                                </th>
+                                <th class="span3">
+                                    <span class="line"></span>留言时间
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- row -->
+                            <tr class="first">
+                                <td>
+                                    {% if obj.stu_id.stu_name  %}
+                                            {{ obj.stu_id.stu_name }}同学
+                                    {% elif obj.tea_id.tea_name %}
+                                            {{ obj.tea_id.tea_name }}老师
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {{ obj.msg_content }}
+                                </td>
+                                <td>
+                                    {{ obj.msg_time }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <div class="field-box">
+                                    <textarea id="reply" name="reply" class="form-control" cols="2"
+                                              rows="10"></textarea>
+                                </div>
+                                <button type="submit" id="check_value">提交回答</button>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="pad-wrapper">
+            <div class="row-fluid">
+                <table class="table striped">
+                    <thead>
+                    <tr>
+                        <th class="span3">
+                            <span class="line"></span>回复人
+                        </th>
+                        <th class="span3">
+                            <span class="line"></span>回复内容
+                        </th>
+                        <th class="span3">
+                            <span class="line"></span>回复时间
+                        </th>
+                    </tr>
+                    </thead>
+                    {% for reply in reply_obj %}
+                        <tr>
+                            <th class="span3">
+                                <span class="line"></span>
+                                {% if reply.stu_id.stu_name  %}
+                                     {{ reply.stu_id.stu_name }}同学
+                                {% elif obj.tea_id.tea_name %}
+                                     {{ reply.tea_id.tea_name }}老师
+                                {% endif %}
+                            </th>
+                            <th class="span3">
+                                <span class="line"></span>{{ reply.msg_replay }}
+                            </th>
+                            <th class="span3">
+                                <span class="line"></span>{{ reply.replay_time }}
+                            </th>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
